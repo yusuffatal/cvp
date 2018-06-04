@@ -801,12 +801,6 @@ def clientBot(op):
                                         contact = ki.getContact(ls)
                                         path = "http://dl.profile.line.naver.jp/{}".format(contact.pictureStatus)
                                         ki.sendImageWithURL(to, str(path))
-                            elif "gbc " in msg.text:
-                                if msg._from in admin:
-                                      bctxt = msg.text.replace("gbc ", "")
-                                      n = ki.getGroupIdsJoined()
-                                      for manusia in n:
-                                          ki.sendMessage(manusia,(bctxt))
                             elif cmd.startswith("kizuna getvp "):
                                 if 'MENTION' in msg.contentMetadata.keys()!= None:
                                     names = re.findall(r'@(\w+)', text)
