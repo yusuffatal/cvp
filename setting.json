@@ -1,0 +1,18 @@
+{
+    "autoadd": false,
+    "autojoin": true,
+    "autoread": false,
+    "protect": false,
+    "protectguest": false,
+    "protectqr": false,    
+    "larangan": false,    
+    "unsendMessage": false,
+    "autoscan": false,
+    "cancel": false,    
+    "RAbatas":{"on":true,"members":1},
+    "RAmessage": "",
+    "message1": "",
+    "readMember": {},
+    "blacklist": {},   
+    "readPoint": {}
+}
