@@ -13,13 +13,13 @@ import time, random, sys, json, codecs, threading, glob, re, string, os, request
 
 #client = LINE()
 #client = LINE("EsciEQ8XV7baVM1HZyJ5.IqtJipTzyCWvcrgownX/bq.pH6Y+zX3kYrZhVYsyvSP+cAwqp/tVaL/KuSx20OE7X0=")
-client = LINE("EAb5XBGVFwGghwC1i3f5.IqtJipTzyCWvcrgownX/bq.ukKaUbh69Bkzw3ouFAhP7Wa2r0ACs4fqYJ2fXBnkm5U==")
+client = LINE("EA9ws7qu8xUVtGL188j5.IqtJipTzyCWvcrgownX/bq.yQ/2KgspbDbXYrmE+DatSCSWkwk6kSQInqwG7AvFoEI=")
 clientMid = client.profile.mid
 clientProfile = client.getProfile()
 clientSettings = client.getSettings()
 clientPoll = OEPoll(client)
 
-ki = LINE("EAb5XBGVFwGghwC1i3f5.IqtJipTzyCWvcrgownX/bq.ukKaUbh69Bkzw3ouFAhP7Wa2r0ACs4fqYJ2fXBnkm5U=")
+ki = LINE("EA9ws7qu8xUVtGL188j5.IqtJipTzyCWvcrgownX/bq.yQ/2KgspbDbXYrmE+DatSCSWkwk6kSQInqwG7AvFoEI=")
 #ki = LINE("EtY5oIeOo5OELzIc9fX2.J6sEygXMkhHTW7MEt5CVCG.NAyGm0AvDMF22PIOxuD9TulvI3p4oZxZUlGVJ08TLNA=")
 kiMid = ki.profile.mid
 kiProfile = ki.getProfile()
