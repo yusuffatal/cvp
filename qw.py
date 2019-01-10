@@ -1007,7 +1007,7 @@ def clientBot(op):
                                     sep = msg.text.split(" ")
                                     search = msg.text.replace(sep[0] + " ","")
                                     with requests.session() as web:
-                                          web.headers["User-Agent"] = random.choice(settings["userAgent"])
+                                          web.headers["User-Agent"] = random.choice(settingss["userAgent"])
                                           url = web.get("http://rahandiapi.herokuapp.com/youtubeapi/search?key=betakey&q={}".format(urllib.parse.quote(search)))
                                           data = url.text
                                           data = json.loads(data)
