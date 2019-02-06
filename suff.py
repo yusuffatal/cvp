@@ -793,8 +793,8 @@ def clientBot(op):
                                     for ls in lists:
                                         contact = ki.getContact(ls)
                                         path = "http://dl.profile.line.naver.jp/{}".format(contact.pictureStatus)
-                                        ki.sendImageWithURL(to, str(path)
-                            elif cmd.startswith("ytmp4: "):
+                                        ki.sendImageWithURL(to, str(path))
+                            elif cmd.startswith("yt: "):
                               if msg._from in admin:
                                 try:
                                     sep = msg.text.split(" ")
