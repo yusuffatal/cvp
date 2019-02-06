@@ -793,7 +793,41 @@ def clientBot(op):
                                     for ls in lists:
                                         contact = ki.getContact(ls)
                                         path = "http://dl.profile.line.naver.jp/{}".format(contact.pictureStatus)
-                                        ki.sendImageWithURL(to, str(path))
+                                        ki.sendImageWithURL(to, str(path)
+                            elif cmd.startswith("ytmp4: "):
+                              if msg._from in admin:
+                                try:
+                                    sep = msg.text.split(" ")
+                                    textToSearch = msg.text.replace(sep[0] + " ","")
+                                    query = urllib.parse.quote(textToSearch)
+                                    search_url="https://www.youtube.com/results?search_query="
+                                    mozhdr = {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'}
+                                    sb_url = search_url + query
+                                    sb_get = requests.get(sb_url, headers = mozhdr)
+                                    soupeddata = BeautifulSoup(sb_get.content, "html.parser")
+                                    yt_links = soupeddata.find_all("a", class_ = "yt-uix-tile-link")
+                                    x = (yt_links[1])
+                                    yt_href =  x.get("href")
+                                    yt_href = yt_href.replace("watch?v=", "")
+                                    qx = "https://youtu.be" + str(yt_href)
+                                    vid = pafy.new(qx)
+                                    stream = vid.streams
+                                    best = vid.getbest()
+                                    best.resolution, best.extension
+                                    for s in stream:
+                                        me = best.url
+                                        hasil = ""
+                                        title = "Judul [ " + vid.title + " ]"
+                                        author = '\n\n│ Author : ' + str(vid.author)
+                                        durasi = '\n│ Duration : ' + str(vid.duration)
+                                        suka = '\n│ Likes : ' + str(vid.likes)
+                                        rating = '\n│ Rating : ' + str(vid.rating)
+                                        deskripsi = '\n│ Deskripsi : ' + str(vid.description)
+                                    client.sendVideoWithURL(msg.to, me)
+                                    client.sendMessage(msg.to,title+ author+ durasi+ suka+ rating+ deskripsi)
+                                except Exception as e:
+                                    client.sendMessage(msg.to,str(e))
+
                             elif cmd.startswith("kizuna getvp "):
                                 if 'MENTION' in msg.contentMetadata.keys()!= None:
                                     names = re.findall(r'@(\w+)', text)
