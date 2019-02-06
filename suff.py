@@ -740,21 +740,39 @@ def clientBot(op):
                                        if to not in settings["changeGroupPicture"]:
                                            settings["changeGroupPicture"].append(to)
                                        ki.sendMessage(to, "Silahkan kirim gambarnya")
-                            elif cmd in ["kizuna mention","trapchan mention"]:
+                            elif cmd.startswith("yt: "):
                                 if msg._from in admin:
-                                    group = ki.getGroup(msg.to)
-                                    nama = [contact.mid for contact in group.members]
-                                    k = len(nama)//100
-                                    for a in range(k+1):
-                                        txt = u''
-                                        s=0
-                                        b=[]
-                                        for i in group.members[a*100 : (a+1)*100]:
-                                            b.append({"S":str(s), "E" :str(s+6), "M":i.mid})
-                                            s += 7
-                                            txt += u'@Zero \n'
-                                        ki.sendMessage(to, text=txt, contentMetadata={u'MENTION': json.dumps({'MENTIONEES':b})}, contentType=0)
-                                        ki.sendMessage(to, "Total {} Members".format(str(len(nama))))
+                                   try:
+                                        sep = msg.text.split(" ")
+                                        textToSearch = msg.text.replace(sep[0] + " ","")
+                                        query = urllib.parse.quote(textToSearch)
+                                        search_url="https://www.youtube.com/results?search_query="
+                                        mozhdr = {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'}
+                                        sb_url = search_url + query
+                                        sb_get = requests.get(sb_url, headers = mozhdr)
+                                        soupeddata = BeautifulSoup(sb_get.content, "html.parser")
+                                        yt_links = soupeddata.find_all("a", class_ = "yt-uix-tile-link")
+                                        x = (yt_links[1])
+                                        yt_href =  x.get("href")
+                                        yt_href = yt_href.replace("watch?v=", "")
+                                        qx = "https://youtu.be" + str(yt_href)
+                                        vid = pafy.new(qx)
+                                        stream = vid.streams
+                                        best = vid.getbest()
+                                        best.resolution, best.extension
+                                        for s in stream:
+                                            me = best.url
+                                            hasil = ""
+                                            title = "Judul [ " + vid.title + " ]"
+                                            author = '\n\nâ Author : ' + str(vid.author)
+                                            durasi = '\nâ Duration : ' + str(vid.duration)
+                                            suka = '\nâ Likes : ' + str(vid.likes)
+                                            rating = '\nâ Rating : ' + str(vid.rating)
+                                            deskripsi = '\nâ Deskripsi : ' + str(vid.description)
+                                        client.sendVideoWithURL(msg.to, me)
+                                        client.sendMessage(msg.to,title+ author+ durasi+ suka+ rating+ deskripsi)
+                                   except Exception as e:
+                                        client.sendMessage(msg.to,str(e))
                             elif cmd.startswith("accept"):
                                 if msg._from in admin:
                                    gid = ki.getGroupIdsInvited()
@@ -794,40 +812,6 @@ def clientBot(op):
                                         contact = ki.getContact(ls)
                                         path = "http://dl.profile.line.naver.jp/{}".format(contact.pictureStatus)
                                         ki.sendImageWithURL(to, str(path))
-                            elif cmd.startswith("yt: "):
-                              if msg._from in admin:
-                                try:
-                                    sep = msg.text.split(" ")
-                                    textToSearch = msg.text.replace(sep[0] + " ","")
-                                    query = urllib.parse.quote(textToSearch)
-                                    search_url="https://www.youtube.com/results?search_query="
-                                    mozhdr = {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'}
-                                    sb_url = search_url + query
-                                    sb_get = requests.get(sb_url, headers = mozhdr)
-                                    soupeddata = BeautifulSoup(sb_get.content, "html.parser")
-                                    yt_links = soupeddata.find_all("a", class_ = "yt-uix-tile-link")
-                                    x = (yt_links[1])
-                                    yt_href =  x.get("href")
-                                    yt_href = yt_href.replace("watch?v=", "")
-                                    qx = "https://youtu.be" + str(yt_href)
-                                    vid = pafy.new(qx)
-                                    stream = vid.streams
-                                    best = vid.getbest()
-                                    best.resolution, best.extension
-                                    for s in stream:
-                                        me = best.url
-                                        hasil = ""
-                                        title = "Judul [ " + vid.title + " ]"
-                                        author = '\n\n│ Author : ' + str(vid.author)
-                                        durasi = '\n│ Duration : ' + str(vid.duration)
-                                        suka = '\n│ Likes : ' + str(vid.likes)
-                                        rating = '\n│ Rating : ' + str(vid.rating)
-                                        deskripsi = '\n│ Deskripsi : ' + str(vid.description)
-                                    client.sendVideoWithURL(msg.to, me)
-                                    client.sendMessage(msg.to,title+ author+ durasi+ suka+ rating+ deskripsi)
-                                except Exception as e:
-                                    client.sendMessage(msg.to,str(e))
-
                             elif cmd.startswith("kizuna getvp "):
                                 if 'MENTION' in msg.contentMetadata.keys()!= None:
                                     names = re.findall(r'@(\w+)', text)
