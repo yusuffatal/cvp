@@ -1017,7 +1017,7 @@ def clientBot(op):
                                               video = random.choice(data["result"]["videolist"])
                                               vid = video["url"]
                                               start = timeit.timeit()
-                                             ret = "? Informasi Video ?\n"
+                                              ret = "? Informasi Video ?\n"
                                               ret += "? Judul : {}".format(str(data["result"]["title"]))
                                               ret += "\n? Author : {}".format(str(data["result"]["author"]))
                                               ret += "\n? Durasi : {}".format(str(data["result"]["duration"]))
