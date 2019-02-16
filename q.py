@@ -439,10 +439,10 @@ def clientBot(op):
             try:
                 if to not in settings["changeGroupPicture"]:
                     settings["changeGroupPicture"].append(to)
-                       if to in settings["changeGroupPicture"]:
-                       	path = "tmp/img.jpg"
-                           settings["changeGroupPicture"].remove(to)
-                           ki.updateGroupPicture(to, path)
+                    if to in settings["changeGroupPicture"]:
+                     path = "tmp/img.jpg"
+                     settings["changeGroupPicture"].remove(to)
+                     ki.updateGroupPicture(to, path)
             except Exception as error:
                 logError(error)
                 traceback.print_tb(error.__traceback__)
