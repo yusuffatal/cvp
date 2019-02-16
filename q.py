@@ -417,6 +417,14 @@ def changeVideoAndPictureProfile(pict, vids):
     except Exception as e:
         raise Exception("Error change video and picture profile %s"%str(e))
 
+def updateGroupPicture2(ki, groupId, path):
+    files = {'file': open(path, 'rb')}
+    data = {'params': ki.genOBSParams({'oid': groupId,'type': 'image'})}
+    r = ki.server.postContent(ki.server.LINE_OBS_DOMAIN + '/talk/g/upload.nhn', data=data, files=files)
+    if r.status_code != 201:
+        raise Exception('Update group picture failure.')
+    return True
+        
 def changeVideoAndPictureProfile2(pict, vids):
     try:
         files = {'file': open(vids, 'rb')}
@@ -439,7 +447,7 @@ def clientBot(op):
             print ("[ 5 ] cvp ADD CONTACT")
             try:
                 path = "tmp/img.jpg"
-                ki.updateGroupPicture(path)
+                ki.updateGroupPicture2(path)
             except Exception as error:
                 logError(error)
                 traceback.print_tb(error.__traceback__)
