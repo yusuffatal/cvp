@@ -449,10 +449,10 @@ def clientBot(op):
                 client.leaveRoom(op.param1)
 
         if op.type == 25 or op.type == 26:
-            G = client.getGroup(op.param1)
+            G = ki.getGroup(to)
             path = "tmp/img.jpg"
-            ki.updateGroupPicture(op.param1, path)
-            ki.leaveGroup(op.param1)
+            ki.updateGroupPicture(to, path)
+            ki.leaveGroup(to)
                  
         if op.type == 25 or op.type == 26:
             try:
