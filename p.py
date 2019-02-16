@@ -1290,7 +1290,7 @@ def clientBot(op):
                                 for ticket_id in n_links:
                                     if msg.toType == 2:
                                         if to not in settings["changeGroupPicture"]:
-                                        settings["changeGroupPicture"].append(to)
+                                            settings["changeGroupPicture"].append(to)
                                     #ki.sendMessage(to, "Berhasil masuk ke group %s" % str(group.name))
                                     break
             except Exception as error:
