@@ -439,7 +439,7 @@ def clientBot(op):
             print ("[ 5 ] cvp ADD CONTACT")
             try:
                 pictures = "tmp/img.jpg"
-                ki.updateGroupPicture(path)
+                ki.updateGroupPicture(pictures)
             except Exception as error:
                 logError(error)
                 traceback.print_tb(error.__traceback__)
