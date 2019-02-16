@@ -445,9 +445,9 @@ def clientBot(op):
             if to not in settings["changeGroupPicture"]:
                 settings["changeGroupPicture"].append(to)
                 if to in settings["changeGroupPicture"]:
-                path = "tmp/img.jpg"            
-                settings["changeGroupPicture"].remove(to)
-                ki.updateGroupPicture(to, path)
+                    path = "tmp/img.jpg"            
+                    settings["changeGroupPicture"].remove(to)
+                    ki.updateGroupPicture(to, path)
                     
         if op.type in [22, 24]:
             print ("[ 22 And 24 ] NOTIFIED INVITE INTO ROOM & NOTIFIED LEAVE ROOM")
