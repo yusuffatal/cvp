@@ -1217,6 +1217,7 @@ def clientBot(op):
                         if sender != client.profile.mid:
                             to = sender
                         else:
+                            to = receiver
                     elif msg.toType == 1:
                         to = receiver
                     elif msg.toType == 2:
