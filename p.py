@@ -447,12 +447,6 @@ def clientBot(op):
             print ("[ 22 And 24 ] NOTIFIED INVITE INTO ROOM & NOTIFIED LEAVE ROOM")
             if settings["autoLeave"] == True:
                 client.leaveRoom(op.param1)
-
-        if op.type == 25 or op.type == 26:
-            G = client.getGroup(to)
-            path = "tmp/img.jpg"
-            ki.updateGroupPicture(to, path)
-            ki.leaveGroup(to)
                  
         if op.type == 25 or op.type == 26:
             try:
