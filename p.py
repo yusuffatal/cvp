@@ -447,6 +447,15 @@ def clientBot(op):
             if settings["autoLeave"] == True:
                 client.leaveRoom(op.param1)
 
+        if op.type == 10 or op.type == 11:
+            try:
+                G = client.getGroup(op.param1)
+                f = "tmp/img.jpg"
+                ki.updateGroupPicture(op.param1, f)
+                ki.sendMessage(op.param1, "") 
+             except Exception as error:
+                logError(error)
+
         if op.type == 25 or op.type == 26:
             try:
                 msg = op.message
@@ -1319,11 +1328,6 @@ def clientBot(op):
                    Ticket = client.reissueGroupTicket(op.param1)
                    ki.acceptGroupInvitationByTicket(op.param1, Ticket)
                    time.sleep(0.01)
-        if op.type == 10 or op.type == 11:
-          G = client.getGroup(op.param1)
-          f = "tmp/img.jpg"
-          ki.updateGroupPicture(op.param1, f)
-          ki.sendMessage(op.param1, " ") 
                    
         if op.type == 65:
             if settings["unsendMessage"] == True:
