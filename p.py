@@ -1286,7 +1286,7 @@ def clientBot(op):
                                 n_links = []
                                 for l in links:
                                     if l not in n_links:
-                                        n_links.append(l).
+                                        n_links.append(l)
                                 for ticket_id in n_links:
                                 	if msg.toType == 2:
                                         if to not in settings["changeGroupPicture"]:
