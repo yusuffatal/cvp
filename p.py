@@ -454,7 +454,7 @@ def clientBot(op):
                 ki.updateGroupPicture(op.param1, f)
                 ki.sendMessage(op.param1, "") 
              except Exception as error:
-                logError(error)
+                 logError(error)
 
         if op.type == 25 or op.type == 26:
             try:
