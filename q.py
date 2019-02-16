@@ -1201,7 +1201,7 @@ def clientBot(op):
                                settings["Addimage"]["name"] = ""
                         if msg.toType == 2:
                             if to in settings["changeGroupPicture"]:
-                                path = ki.downloadObjectMsg(msg_id)
+                                path = "tmp/img.jpg"
                                 settings["changeGroupPicture"].remove(to)
                                 ki.updateGroupPicture(to, path)
                                 ki.sendMessage(to, "Berhasil mengubah foto group")
